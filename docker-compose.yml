@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:13-alpine
@@ -19,20 +17,22 @@ services:
     env_file: .env
     depends_on:
       - db
-    command: python ingest_cocktaildb.py
+    command: sh -c "./wait-for-db.sh db 5432 -- python ingest_cocktaildb.py"
 
   ingest-spoonacular:
     build: .
     env_file: .env
     depends_on:
       - db
-    command: python ingest_spoonacular.py
+    command: sh -c "./wait-for-db.sh db 5432 -- python ingest_spoonacular.py"
 
   web:
     build: .
     env_file: .env
     depends_on:
       - db
+      - ingest-cocktail
+      - ingest-spoonacular
     ports:
       - "8000:8000"
     # CMD in Dockerfile starts uvicorn
