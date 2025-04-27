@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lord of the Drinks</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  
+  <!-- Marked.js for Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Lord of the Drinks</h1>
+    <p class="subtitle">Your ultimate food & drink pairing oracle</p>
+  </header>
+
+  <main>
+    <div class="card form-card">
+      <form id="pair-form">
+        <input type="text" id="food-query" placeholder="Enter a food dish…" required />
+        <button type="submit" class="btn-primary">Find Pairings</button>
+      </form>
+    </div>
+
+    <div id="loading" class="card loading-card" hidden>⏳ Fetching your perfect match…</div>
+    
+    <div id="error" class="card error-card" hidden></div>
+
+    <div id="results" class="results-grid" hidden>
+      <div id="food-details" class="card detail-card"></div>
+      <div id="explanation" class="card explanation-card"></div>
+      <div id="drinks-list" class="drinks-grid"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>🍷 Made with care by Lord of the Drinks</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
